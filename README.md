@@ -1,15 +1,23 @@
+<img src=".github/assets/muad.jpg" width="600px" />
 
-muad - The one who points the way.
+## Introduction 
 
-### Introduction 
+> named after **Muad'Dib**, a wise desert mouse. In Fremen culture it means _**"the one who points the way"**_
 
-Highly experimental software for declaring pipeline of setup of programs of daily usage and its dotfiles at once. Muad allows to define **elements**that are GitHub Actions like YAML files that will get executed once the software is being ran.
+Highly experimental automation software for declaring pipeline of setup of programs of daily usage and its dotfiles at once.  
+It supports most of the features that are wanted during creating such flow for reproductible developer's environment.
 
-It supports most of the features that are wanted during creating such flow for reproductible developer's environment; cloning github repositories, executing any shell commands, programatically responding to interactive Y/n prompts, installing global npm/yarn/pnpm/bun packages, installing manpages, installing binaries to system PATH.
+Some of them are:
+1. Cloning git repositories (via `clone-repository` tool)
+2. Executing any shell commands (via `execute-bash-command` tool)
+3. Programatically matching and responding to interactive Y/n prompts (via `execute-bash-command` tool and `interactive-prompts` set)
+4. Installing global npm/yarn/pnpm/bun packages (via `js-global-install` tool)
+5. Installing manpages (via `install-manpages` tool)
+6. Installing binaries to system PATH. (via `install-binary` tool)
 
 It also provides pipeline utilities such as safe way to clean up build artifacts from the system.
 
-#### Future
+### Future
 
 As previously mentioned the project is in highly experimental stage (not even pre-release). There is no versioning and breaking changes are being introduced every commit. Beware of the rapid-changing nature of it. If you want to use it despite all that I'm more than happy to hear any feedback or suggestions.
 
@@ -62,3 +70,7 @@ pipeline:
         - ${{ ctx.batSourcePath }}
 
 ```
+
+## License
+
+MIT
