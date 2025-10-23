@@ -1,0 +1,30 @@
+{
+  "name": "ldde",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "compile": "bun build --compile --minify --target=bun-darwin-arm64 ./src/index.ts --outfile muad"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/dlv": "^1.1.5",
+    "@types/semver": "^7.7.1",
+    "@types/yargs": "^17.0.33",
+    "type-fest": "^4.41.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "bun-pty": "^0.3.2",
+    "dlv": "^1.1.3",
+    "dset": "^3.1.4",
+    "flattie": "^1.1.1",
+    "nanoid": "^5.1.5",
+    "semver": "^7.7.2",
+    "trash": "^9.0.0",
+    "yargs": "^18.0.0"
+  }
+}

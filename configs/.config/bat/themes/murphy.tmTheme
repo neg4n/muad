@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>name</key>
+  <string>Murphy (Vim)</string>
+
+  <key>settings</key>
+  <array>
+
+    <!-- Global settings -->
+    <dict>
+      <key>settings</key>
+      <dict>
+        <key>background</key><string>#000000</string>
+        <key>foreground</key><string>#87FF87</string>
+
+        <!-- Caret & line highlight reflect Vim cursor colors -->
+        <key>caret</key><string>#87FF87</string>
+        <key>lineHighlight</key><string>#444444</string>
+
+        <!-- Gutter mirrors Vim yellow line numbers -->
+        <key>gutter</key><string>#000000</string>
+        <key>gutterForeground</key><string>#FFFF00</string>
+
+        <!-- Selection matches Vim Visual: white on dark green -->
+        <key>selection</key><string>#005F00</string>
+        <key>selectionForeground</key><string>#FFFFFF</string>
+        <key>inactiveSelection</key><string>#303030</string>
+
+        <!-- Find / search highlight -->
+        <key>findHighlight</key><string>#0000FF</string>
+        <key>findHighlightForeground</key><string>#FFFFFF</string>
+        <key>highlight</key><string>#FFD7AF</string>
+
+        <!-- Indent guides -->
+        <key>guide</key><string>#444444</string>
+        <key>activeGuide</key><string>#BCBCBC</string>
+        <key>stackGuide</key><string>#3A3A3A</string>
+
+        <!-- Brackets/tags accents (Vim MatchParen is a warm tint) -->
+        <key>bracketsOptions</key><string>underline</string>
+        <key>bracketsForeground</key><string>#FFD7AF</string>
+        <key>tagsOptions</key><string>underline</string>
+        <key>tagsForeground</key><string>#FFD7AF</string>
+
+        <!-- Subtle right-edge shadow -->
+        <key>shadow</key><string>#262626</string>
+      </dict>
+    </dict>
+
+    <!-- Comments (Vim: Comment -> #FFA700) -->
+    <dict>
+      <key>name</key><string>Comment</string>
+      <key>scope</key><string>comment</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#FFA700</string>
+      </dict>
+    </dict>
+
+    <!-- Keywords / statements (Vim: Statement -> #FFFF00) -->
+    <dict>
+      <key>name</key><string>Keyword</string>
+      <key>scope</key><string>keyword, storage</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#FFFF00</string>
+      </dict>
+    </dict>
+
+    <!-- Identifiers & functions (Vim: Identifier -> #00FFFF) -->
+    <dict>
+      <key>name</key><string>Identifiers</string>
+      <key>scope</key><string>variable, variable.other, variable.parameter, entity.name.function, support.function</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#00FFFF</string>
+      </dict>
+    </dict>
+
+    <!-- Types (Vim: Type -> #BCBCBC) -->
+    <dict>
+      <key>name</key><string>Types</string>
+      <key>scope</key><string>storage.type, support.type, entity.name.type, entity.other.inherited-class</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#BCBCBC</string>
+      </dict>
+    </dict>
+
+    <!-- Strings (Vim: Constant/strings typically use Constant color -> #FFFFFF) -->
+    <dict>
+      <key>name</key><string>Strings</string>
+      <key>scope</key><string>string, constant.character</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#FFFFFF</string>
+      </dict>
+    </dict>
+
+    <!-- Numbers & other constants (Vim: Constant -> #FFFFFF) -->
+    <dict>
+      <key>name</key><string>Numbers &amp; Constants</string>
+      <key>scope</key><string>constant.numeric, constant.language, constant.other</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#FFFFFF</string>
+      </dict>
+    </dict>
+
+    <!-- Preprocessor / directives (Vim: PreProc -> #FFD7AF) -->
+    <dict>
+      <key>name</key><string>Preprocessor</string>
+      <key>scope</key>
+      <string>meta.preprocessor, keyword.control.import, keyword.other.directive, entity.name.include</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#FFD7AF</string>
+      </dict>
+    </dict>
+
+    <!-- Specials, escapes, regex (Vim: Special/Title -> #FF00FF) -->
+    <dict>
+      <key>name</key><string>Special</string>
+      <key>scope</key><string>constant.character.escape, string.regexp, punctuation.section.embedded, keyword.other.special-method</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#FF00FF</string>
+      </dict>
+    </dict>
+
+    <!-- Headings (Vim: Title -> #FF00FF) -->
+    <dict>
+      <key>name</key><string>Headings</string>
+      <key>scope</key><string>markup.heading, entity.name.section</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#FF00FF</string>
+        <key>fontStyle</key><string>bold</string>
+      </dict>
+    </dict>
+
+    <!-- Links / underlined (Vim: Underlined -> #00AFAF) -->
+    <dict>
+      <key>name</key><string>Links</string>
+      <key>scope</key><string>markup.underline.link, meta.link</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#00AFAF</string>
+      </dict>
+    </dict>
+
+    <!-- HTML/XML tags -> yellow like Statement -->
+    <dict>
+      <key>name</key><string>Tags</string>
+      <key>scope</key><string>entity.name.tag, punctuation.definition.tag, entity.other.attribute-name</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#FFFF00</string>
+      </dict>
+    </dict>
+
+    <!-- Diff colors (match murphy’s Diff* hues) -->
+    <dict>
+      <key>name</key><string>Diff Inserted</string>
+      <key>scope</key><string>markup.inserted, markup.inserted.diff</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#87FF87</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Diff Changed</string>
+      <key>scope</key><string>markup.changed, markup.changed.diff</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#5F87AF</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Diff Deleted</string>
+      <key>scope</key><string>markup.deleted, markup.deleted.diff</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#FF0000</string>
+      </dict>
+    </dict>
+
+    <!-- Invalid/error (Vim: Error/ErrorMsg white on red) -->
+    <dict>
+      <key>name</key><string>Invalid</string>
+      <key>scope</key><string>invalid, invalid.illegal</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#FFFFFF</string>
+        <key>background</key><string>#FF0000</string>
+      </dict>
+    </dict>
+
+    <!-- Markdown emphasis styles -->
+    <dict>
+      <key>name</key><string>Bold</string>
+      <key>scope</key><string>markup.bold</string>
+      <key>settings</key>
+      <dict>
+        <key>fontStyle</key><string>bold</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Italic</string>
+      <key>scope</key><string>markup.italic</string>
+      <key>settings</key>
+      <dict>
+        <key>fontStyle</key><string>italic</string>
+      </dict>
+    </dict>
+
+    <!-- Punctuation/operators keep default (foreground) -->
+
+  </array>
+</dict>
+</plist>

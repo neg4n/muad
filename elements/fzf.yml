@@ -1,0 +1,25 @@
+name: "fzf"
+pipeline:
+  - tool: clone-repository
+    with:
+      url: https://github.com/junegunn/fzf.git
+      branch: master
+      output-assign: $>{{ ctx.fzfSourcePath }}
+
+  - tool: execute-bash-command
+    with:
+      command: "./install"
+      working-directory: ${{ ctx.fzfSourcePath }}
+      interactive-prompts:
+        - match: "Do you want to enable fuzzy auto-completion? ([y]/n)"
+          response: "y"
+        - match: "Do you want to enable key bindings? ([y]/n)"
+          response: "y"
+        - match: "Do you want to update your shell configuration files? ([y]/n)"
+          response: "y"
+      quiet: true
+
+  - tool: safe-cleanup
+    with:
+      paths:
+        - ${{ ctx.fzfSourcePath }}

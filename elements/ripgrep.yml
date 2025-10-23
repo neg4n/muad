@@ -1,0 +1,19 @@
+name: "ripgrep"
+pipeline:
+  - tool: clone-repository
+    with:
+      url: "https://github.com/BurntSushi/ripgrep.git"
+      branch: "master"
+      output-assign: "$>{{ ctx.ripgrepSourcePath }}"
+
+  - tool: execute-bash-command
+    with: 
+      command: "cargo build --release --features 'pcre2'"
+      working-directory: ${{ ctx.ripgrepSourcePath }}
+      quiet: true
+  - tool: safe-cleanup
+    with:
+      paths:
+        - ${{ ctx.ripgrepSourcePath }}
+
+

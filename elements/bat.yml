@@ -1,0 +1,41 @@
+name: "bat"
+pipeline:
+  # Clone the remote repository from `main`
+  - tool: clone-repository
+    with:
+      url: https://github.com/sharkdp/bat.git
+      branch: master 
+      output-assign: $>{{ ctx.batSourcePath }}
+
+  # Build and install the binary using cargo
+  - tool: execute-bash-command
+    with:
+      command: "cargo install --path . --locked"
+      working-directory: ${{ ctx.batSourcePath }}
+      quiet: true
+
+  # Copy the dotfiles into system's valid path
+  - tool: execute-bash-command
+    with:
+      command: "cp -fR .config/bat/ ~/.config/bat/"
+      working-directory: ${{ ctx.storageDirectory }}
+      quiet: true
+
+  # Rebuild the bat's cache in order to see the themes from previously copied configuration
+  - tool: execute-bash-command
+    with:
+      command: "./bat cache --build"
+      working-directory: ${{ ctx.batSourcePath }}/target/release/
+      quiet: true
+
+  # Install manpages manually. The cargo install step does not handle that.
+  - tool: install-manpages
+    with:
+      source-directory: ${{ ctx.batSourcePath }}/target/release/build/
+      update-database: true
+
+  # Safely clean up the local repository and obsolete build artifacts (move to system trash)
+  - tool: safe-cleanup
+    with:
+      paths:
+        - ${{ ctx.batSourcePath }}

@@ -1,0 +1,106 @@
+version: '3.8'
+
+services:
+  ldde-dev:
+    build:
+      context: .
+      target: development
+    container_name: ldde-development
+    working_dir: /app
+    volumes:
+      # Mount source code for live development
+      - ./src:/app/src:ro
+      - ./elements:/app/elements:ro
+      - ./package.json:/app/package.json:ro
+      # Mount for outputs and temporary files
+      - ldde-temp:/tmp
+      - ldde-bun-cache:/root/.bun
+      - ldde-npm-cache:/root/.npm
+      - ldde-yarn-cache:/root/.yarn
+      - ldde-pnpm-cache:/root/.local/share/pnpm
+    environment:
+      - DEBUG=true
+      - NODE_ENV=development
+    command: ["bun", "--hot", "src/index.ts", "install"]
+    
+  ldde-test:
+    build:
+      context: .
+      target: development
+    container_name: ldde-test
+    working_dir: /app
+    volumes:
+      - ./src:/app/src:ro
+      - ./elements:/app/elements:ro
+      - ./package.json:/app/package.json:ro
+      - ldde-test-temp:/tmp
+    environment:
+      - DEBUG=true
+      - NODE_ENV=test
+    profiles:
+      - test
+    command: ["bun", "test"]
+
+  ldde-prod:
+    build:
+      context: .
+      target: production
+    container_name: ldde-production
+    volumes:
+      # Only mount elements for production
+      - ./elements:/app/elements:ro
+      - ldde-prod-temp:/tmp
+    environment:
+      - NODE_ENV=production
+    profiles:
+      - production
+
+  # Service for testing js-global-install with different package managers
+  ldde-package-test:
+    build:
+      context: .
+      target: development
+    container_name: ldde-package-test
+    working_dir: /app
+    volumes:
+      - ./src:/app/src:ro
+      - ./elements:/app/elements:ro
+      - ./package.json:/app/package.json:ro
+      - ldde-pkg-test-temp:/tmp
+      # Global install directories for different package managers
+      - ldde-global-npm:/root/.local/share/npm
+      - ldde-global-yarn:/root/.local/share/yarn
+      - ldde-global-pnpm:/root/.local/share/pnpm-global
+      - ldde-global-bun:/root/.bun
+    environment:
+      - DEBUG=true
+      - NODE_ENV=test
+    profiles:
+      - package-test
+    command: ["sleep", "infinity"]  # Keep container running for manual testing
+
+volumes:
+  ldde-temp:
+    driver: local
+  ldde-test-temp:
+    driver: local
+  ldde-prod-temp:
+    driver: local
+  ldde-pkg-test-temp:
+    driver: local
+  ldde-bun-cache:
+    driver: local
+  ldde-npm-cache:
+    driver: local
+  ldde-yarn-cache:
+    driver: local
+  ldde-pnpm-cache:
+    driver: local
+  ldde-global-npm:
+    driver: local
+  ldde-global-yarn:
+    driver: local
+  ldde-global-pnpm:
+    driver: local
+  ldde-global-bun:
+    driver: local
